@@ -1,113 +1,138 @@
-/* —— basic reset —— */
+/* Start with predictable sizing and spacing for every element. */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  min-height: 100vh;
+  border-top: 5px solid #e31b34;
+  color: #171717;
+  background: #fff;
   display: flex;
   justify-content: center;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 .page-wrapper {
-  width: 90%;
-  max-width: 900px;
+  width: min(100% - 40px, 960px);
+  min-height: calc(100vh - 5px);
+  display: flex;
+  flex-direction: column;
 }
 
-/* header */
+/* The wordmark and headline create a simple, editorial brand header. */
 .site-header {
+  padding-top: 42px;
   text-align: center;
-  padding-top: 50px;
+}
+
+.brand-name {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.brand-o {
+  color: #e31b34;
 }
 
 .site-title {
-  font-size: 22px;
+  margin-top: 20px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 5vw, 42px);
   font-weight: 500;
-  margin-bottom: 10px;
+  line-height: 1.15;
 }
 
-/* chat window */
+.site-intro {
+  margin-top: 10px;
+  color: #5e5a56;
+  font-size: 16px;
+}
+
+/* Keep the conversation area calm and easy to read. */
 .chatbox {
-  margin: 40px 0;
+  width: min(100%, 760px);
+  margin: 36px auto 0;
 }
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  padding: 22px;
+  border: 1px solid #dedbd7;
+  border-top: 3px solid #e31b34;
+  background: #f8f6f2;
+  font-size: 17px;
+  line-height: 1.6;
   white-space: pre-line;
 }
 
-/* messages */
 .msg {
   margin-bottom: 14px;
   line-height: 1.5;
 }
 
 .msg.user {
-  color: #000;
+  color: #171717;
 }
 
 .msg.ai {
-  color: #666666;
+  color: #5e5a56;
 }
 
-/* input row */
 .chat-form {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid #c9c5c0;
+  border-radius: 0;
+  color: #171717;
+  background: #fff;
+  font: inherit;
+  font-size: 16px;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #e31b34;
   outline-offset: 2px;
 }
 
 .chat-form button {
-  font-size: 18px;
-  background: #000;
+  width: 50px;
+  height: 50px;
+  border: 0;
   color: #fff;
-  border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  background: #e31b34;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.2s ease;
 }
 
 .chat-form button .material-icons {
-  font-size: 24px;
+  font-size: 23px;
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #171717;
 }
 
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+.chat-form button:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
 }
 
-/* visually hidden */
+/* Hide text visually while keeping it available to screen readers. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -120,24 +145,44 @@ body {
   border: 0;
 }
 
-/* footer */
 .site-footer {
-  margin: 60px 0 40px;
-  text-align: center;
+  margin-top: auto;
+  padding: 28px 0 24px;
+  border-top: 1px solid #e6e2de;
+  color: #5e5a56;
   font-size: 14px;
-  color: #666;
+  text-align: center;
 }
 
 .site-footer nav {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #171717;
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #e31b34;
+}
+
+@media (max-width: 480px) {
+  .page-wrapper {
+    width: min(100% - 28px, 960px);
+  }
+
+  .site-header {
+    padding-top: 32px;
+  }
+
+  .chat-window {
+    height: 320px;
+    padding: 16px;
+  }
+
+  .site-footer a {
+    margin: 0 5px;
+  }
 }
